@@ -7,7 +7,7 @@ html {
 
 body {
     font-family: system-ui, sans-serif;
-    max-width: min(700px, 90vw);
+    max-width: min(1200px, 90vw);
     margin: auto;
     margin-bottom: 4rem;
 }
@@ -41,8 +41,12 @@ button {
 .avatar-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
     justify-content: space-around;
+    margin-bottom: 3rem;
+}
+
+.avatar-grid-error {
     margin-bottom: 3rem;
 }
 

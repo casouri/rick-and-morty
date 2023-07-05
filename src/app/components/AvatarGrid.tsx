@@ -18,37 +18,47 @@ type AvatarGridProps = {
   setTotalPage: (page: number) => void,
 };
 
-const AvatarGrid = ({page, setTotalPage}: ImageGridProps) => {
+
+const AvatarGrid = ({page, setTotalPage}: AvatarGridProps) => {
   const [images, setImages] = useState([] as Array<Character>);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     const subr = async () => {
-      const resp = await fetch(CHARACTER_URL + '?' + new URLSearchParams({
-      page: page.toString()
-      }));
-      const data = await resp.json();
+      try {
+          const resp = await fetch(CHARACTER_URL + '?' + new URLSearchParams({
+          page: page.toString()
+        }));
+        const data = await resp.json();
 
-      setTotalPage(data.info.pages);
+        setTotalPage(data.info.pages);
 
-      const images = data.results.map((entry: any) => ({
-        id: entry.id,
-        name: entry.name,
-        image: entry.image
-      }));
-      setImages(images);
+        const images = data.results.map((entry: any) => ({
+          id: entry.id,
+          name: entry.name,
+          image: entry.image
+        }));
+        setImages(images);
+      } catch (err) {
+        setErrorMsg("Sorry, something went wrong when fetching data from the backend.");
+      }
     };
 
     subr();
   }, [page]);
 
-  let avatars = images.map((entry: Character) =>
+  const avatars = images.map((entry: Character) =>
     <Avatar key={entry.id}
       id={entry.id}
       name={entry.name}
       image={entry.image}
     />);
 
-  return (<div className="avatar-grid">{avatars}</div>);
+  if (errorMsg !== "") {
+    return (<div className="avatar-grid-error"><p>{errorMsg}</p></div>)
+  } else {
+    return (<div className="avatar-grid">{avatars}</div>);
+  }
 }
 
 export default AvatarGrid;
