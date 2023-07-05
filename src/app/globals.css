@@ -43,7 +43,7 @@ button {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: space-around;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 /*** Avatar */
