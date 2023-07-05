@@ -1,0 +1,95 @@
+@import 'material-symbols/outlined.css';
+
+html {
+    --foreground: #333333;
+    --background: #ffffff;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    max-width: min(700px, 90vw);
+    margin: auto;
+    margin-bottom: 4rem;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+button {
+    border: none;
+}
+
+/*** AvatarGrid */
+
+.avatar-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: space-around;
+    margin-bottom: 4rem;
+}
+
+/*** Avatar */
+
+.avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+/*** Paginator*/
+
+.paginator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.paginator-current-page {
+    border: solid CornflowerBlue 1px;
+}
+
+.paginator button span {
+    font-size: 1.5rem;
+    vertical-align: bottom;
+}
+
+.paginator button {
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: var(--background);
+    border-radius: 0.2rem;
+    box-shadow: none;
+    height: 2rem;
+    width: 2rem;
+}
+
+.paginator button:hover {
+    border: solid #aaaaaa 1px;
+}
+
+.paginator button:active {
+    border: solid black 1px;
+}
